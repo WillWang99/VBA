@@ -1,0 +1,85 @@
+Design Document for Automation Testing with Refection
+1. Introduction
+1.1 Purpose
+This document outlines the design for an automated testing framework using Refection and VBA to create and execute test scripts. Each test case will use a different client account, and the test logs will be generated and stored as .txt files in a designated folder.
+
+1.2 Scope
+The scope of this design includes:
+
+Setting up the test environment.
+Creating test scripts using VBA.
+Executing test cases with different client accounts.
+Generating and storing test logs.
+1.3 Definitions, Acronyms, and Abbreviations
+VBA: Visual Basic for Applications
+Refection: The software tool used for test automation
+Test Script: A sequence of instructions that automate the execution of test cases
+Test Log: A file that records the results of the test execution
+2. System Overview
+The automated testing framework will consist of the following components:
+
+Test Environment: The setup required to execute the test cases.
+Test Scripts: Written in VBA to automate the testing process.
+Client Accounts: Different accounts used for testing various scenarios.
+Log Storage: A folder where the test logs will be stored as .txt files.
+3. Design Considerations
+3.1 Assumptions
+The Refection software is installed and configured on the test machines.
+Client accounts are pre-created and accessible for testing purposes.
+3.2 Constraints
+Test execution must be performed within the time allocated for each test session.
+Logs must be stored securely and accessible for review.
+4. Detailed Design
+4.1 Test Environment Setup
+Refection Installation: Ensure Refection is installed and configured on the test machine.
+VBA Setup: Set up the VBA environment for scripting within Refection.
+4.2 Test Script Development
+Script Structure: Each test script will include:
+Initialization of the test environment.
+Execution of test steps.
+Verification of expected outcomes.
+Logging of results.
+Sample Script:
+vba
+Copy code
+Sub TestCase1()
+    ' Initialize test environment
+    Dim clientAccount As String
+    clientAccount = "ClientAccount1"
+    
+    ' Execute test steps
+    ' Example: Log in with client account, perform actions, verify results
+    
+    ' Log results
+    Dim logFilePath As String
+    logFilePath = "C:\TestLogs\TestCase1_" & Format(Now(), "yyyyMMdd_HHmmss") & ".txt"
+    
+    Open logFilePath For Output As #1
+    Print #1, "Test Case 1"
+    Print #1, "Client Account: " & clientAccount
+    Print #1, "Result: Pass"
+    Close #1
+End Sub
+4.3 Test Case Execution
+Execution Process:
+Each test case will be executed using a different client account.
+The script will be run within Refection, and results will be logged.
+4.4 Log Generation and Storage
+Log File Naming Convention: Each log file will be named with the test case identifier and timestamp (e.g., TestCase1_20240725_123456.txt).
+Log Storage Location: All log files will be stored in C:\TestLogs\.
+5. Testing
+5.1 Test Plan
+Unit Testing: Verify individual test scripts for correctness.
+Integration Testing: Ensure that test scripts work together and generate logs correctly.
+System Testing: Perform end-to-end testing with multiple client accounts to validate the entire process.
+6. Maintenance
+6.1 Log Review
+Logs will be reviewed periodically to ensure the accuracy of test results and identify any issues.
+6.2 Script Updates
+Test scripts will be updated as needed to accommodate changes in the application under test or the testing requirements.
+7. Appendices
+7.1 Appendix A: References
+Refection User Guide
+VBA Programming Guide
+7.2 Appendix B: Glossary
+Automation Testing: The use of software tools to execute pre-scripted tests on a software application before it is released into production.
